@@ -348,7 +348,7 @@ namespace CalculatorService.Server.Controllers
 
                 QueryResponse result = new QueryResponse();
                 //Get Operations for a id.
-                result.Operations = Journal.get(value.Id);
+                result.Operations =  Journal.get(value.Id);
 
                 if (result.Operations.Count() == 0)
                 {

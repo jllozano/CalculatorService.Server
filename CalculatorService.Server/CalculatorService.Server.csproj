@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="Models\MultRequest.cs" />
     <Compile Include="Models\DivRequest.cs" />
+    <Compile Include="Models\Operations.cs" />
     <Compile Include="Models\SqrtRequest.cs" />
     <Compile Include="Models\SubRequest.cs" />
     <Compile Include="Models\MultResponse.cs" />

@@ -12,31 +12,36 @@ namespace CalculatorService.Server.Models
 
         public static void store(int Id, Operation Operation)
         {
-            List<Operation> operationList = new List<Operation>();
+           
+            List<Operation> listOperations = new  List<Operation>();
 
+            // Check if the key [id] exists in Cache, if not exist store a new key, else update
+            // the list of operations in the key [id]
             if (Cache.Exists(Id.ToString()))
             {
-                operationList =  (List<Operation>)Cache.Get(Id.ToString());
-                operationList.Add(Operation);
-                Cache.Update(Id.ToString(), operationList);
+                listOperations =  (List<Operation>)Cache.Get(Id.ToString());
+                listOperations.Add(Operation);
+                Cache.Update(Id.ToString(), listOperations);
             }
             else
             {
-                operationList.Add(Operation);
-                Cache.Store(Id.ToString(), operationList);
+                listOperations.Add(Operation);
+                Cache.Store(Id.ToString(), listOperations);
             }
         }
 
         public static List<Operation> get(int Id)
         {
-            List<Operation> operationList = new List<Operation>();
 
+            List<Operation>  listOperations = new List<Operation>();
+          
+            //returns the operation lists in the key [id]
             if (Cache.Exists(Id.ToString()))
             {
-                operationList = (List<Operation>)Cache.Get(Id.ToString());
+                listOperations = (List<Operation>)Cache.Get(Id.ToString());
             }
 
-            return operationList;      
+            return listOperations;      
         }
     }
 
