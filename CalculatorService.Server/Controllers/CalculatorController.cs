@@ -40,7 +40,7 @@ namespace CalculatorService.Server.Controllers
                     forJournal += number + " + ";
                 }
 
-                forJournal = forJournal.Substring(0, forJournal.Length - 1);
+                forJournal = forJournal.Substring(0, forJournal.Length - 3);
                 forJournal += " = " + result.Sum;
 
                 if (Request != null && Request.Headers != null)
@@ -57,10 +57,10 @@ namespace CalculatorService.Server.Controllers
                         {
                             OperationDes = "Sum",
                             Calculation = forJournal,
-                            Date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'")
+                            Date = DateTime.Now.ToString("u")
                         };
 
-                        Journal.store(int.Parse(trackingId), operation);
+                        Journal.store(trackingId, operation);
                         logger.Trace("Add success!!");
                     }                 
                 }
@@ -86,7 +86,7 @@ namespace CalculatorService.Server.Controllers
             /* An invalid request has been received. 
             * This may mean the HTTP requests and/or the HTTP body may contains some errors which should be fixed
             * */
-            if (value.Minuend == null || value.Subtrahend == null)
+            if (value == null)
             {
                 logger.Error(HttpStatusCode.BadRequest);
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -117,10 +117,10 @@ namespace CalculatorService.Server.Controllers
                         {
                             OperationDes = "Sub",
                             Calculation = forJournal,
-                            Date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'")
+                            Date = DateTime.Now.ToString("u")
                         };
 
-                        Journal.store(int.Parse(trackingId), operation);
+                        Journal.store(trackingId, operation);
                         logger.Trace("Sub success!!");
                     }
                 }              
@@ -184,10 +184,10 @@ namespace CalculatorService.Server.Controllers
                         {
                             OperationDes = "Mult",
                             Calculation = forJournal,
-                            Date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'")
+                            Date = DateTime.Now.ToString("u")
                         };
 
-                        Journal.store(int.Parse(trackingId), operation);
+                        Journal.store(trackingId, operation);
                         logger.Trace("Mult success!!");
                     }
                 }
@@ -215,7 +215,7 @@ namespace CalculatorService.Server.Controllers
             * This may mean the HTTP requests and/or the HTTP body may contains some errors which should be fixed
             * */
 
-            if (value == null || value.Dividend == null || value.Divisor == null)
+            if (value == null)
             {
                 logger.Error(HttpStatusCode.BadRequest);
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -230,7 +230,7 @@ namespace CalculatorService.Server.Controllers
 
                 result.Quotient = value.Dividend / value.Divisor;
                 result.Remainder = value.Dividend % value.Divisor;
-                forJournal = value.Dividend + " / " + value.Divisor + " = " + result.Quotient  + " remainder = " + result.Remainder;
+                forJournal = value.Dividend + " / " + value.Divisor + " = " + result.Quotient  + " Remainder = " + result.Remainder;
 
 
                 if (Request != null && Request.Headers != null)
@@ -247,10 +247,10 @@ namespace CalculatorService.Server.Controllers
                         {
                             OperationDes = "Div",
                             Calculation = forJournal,
-                            Date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'")
+                            Date = DateTime.Now.ToString("u")
                         };
 
-                        Journal.store(int.Parse(trackingId), operation);
+                        Journal.store(trackingId, operation);
                         logger.Trace("Div success!!");
                     }
                 }
@@ -277,7 +277,7 @@ namespace CalculatorService.Server.Controllers
             /* An invalid request has been received. 
             * This may mean the HTTP requests and/or the HTTP body may contains some errors which should be fixed
             * */
-            if (value.Number == null)
+            if (value == null)
             {
                 logger.Error(HttpStatusCode.BadRequest);
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -308,10 +308,10 @@ namespace CalculatorService.Server.Controllers
                         {
                             OperationDes = "Sqrt",
                             Calculation = forJournal,
-                            Date = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffff'Z'")
+                            Date = DateTime.Now.ToString("u")
                         };
 
-                        Journal.store(int.Parse(trackingId), operation);
+                        Journal.store(trackingId, operation);
                         logger.Trace("Sqrt success!!");
                     }
                 }
@@ -336,7 +336,7 @@ namespace CalculatorService.Server.Controllers
             /* An invalid request has been received. 
             * This may mean the HTTP requests and/or the HTTP body may contains some errors which should be fixed
             * */
-            if (value.Id == null)
+            if (value == null)
             {
                 logger.Error(HttpStatusCode.BadRequest);
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -350,7 +350,7 @@ namespace CalculatorService.Server.Controllers
                 //Get Operations for a id.
                 result.Operations =  Journal.get(value.Id);
 
-                if (result.Operations.Count() == 0)
+                if (result.Operations == null)
                 {
                     logger.Info("There isn't  Operations for the Id : + " + value.Id.ToString());
                 }

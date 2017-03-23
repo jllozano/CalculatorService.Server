@@ -10,7 +10,7 @@ namespace CalculatorService.Server.Models
     public class Operations
     {
         [DataMember(Name = "Operations")]
-        public List<Operation> listOperations;
+        public List<Operation> ListOperations;
 
     }
 }

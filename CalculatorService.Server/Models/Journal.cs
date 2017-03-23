@@ -10,38 +10,37 @@ namespace CalculatorService.Server.Models
     public static class Journal
     {
 
-        public static void store(int Id, Operation Operation)
+        public static void store(string id, Operation operation)
         {
-           
-            List<Operation> listOperations = new  List<Operation>();
+
+            List<Operation> operations = new List<Operation>();            
 
             // Check if the key [id] exists in Cache, if not exist store a new key, else update
             // the list of operations in the key [id]
-            if (Cache.Exists(Id.ToString()))
+            if (Cache.Exists(id))
             {
-                listOperations =  (List<Operation>)Cache.Get(Id.ToString());
-                listOperations.Add(Operation);
-                Cache.Update(Id.ToString(), listOperations);
+                operations = (List<Operation>)Cache.Get(id);
+                operations.Add(operation);
+                Cache.Update(id, operations);
             }
             else
             {
-                listOperations.Add(Operation);
-                Cache.Store(Id.ToString(), listOperations);
+                operations.Add(operation);
+                Cache.Store(id, operations);
             }
         }
 
-        public static List<Operation> get(int Id)
-        {
-
-            List<Operation>  listOperations = new List<Operation>();
-          
+        public static List<Operation> get(string id)
+        {                      
             //returns the operation lists in the key [id]
-            if (Cache.Exists(Id.ToString()))
+            if (Cache.Exists(id))
             {
-                listOperations = (List<Operation>)Cache.Get(Id.ToString());
+                return (List<Operation>)Cache.Get(id);
             }
-
-            return listOperations;      
+            else
+            {
+                return null;
+            }
         }
     }
 

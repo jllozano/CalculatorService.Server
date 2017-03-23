@@ -7,6 +7,6 @@ namespace CalculatorService.Server.Models
 {
     public class QueryRequest
     {
-        public int Id;
+        public string Id;
     }
 }
