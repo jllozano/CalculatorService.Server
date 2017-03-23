@@ -8,17 +8,17 @@ Esta solución contiene un servicio web y distintos métodos y acciones, que per
 Las operaciones son las siguientes:
 
 * Add - realiza la suma de varios numeros y devuelve el resultado. 
-      Este método espera un array de 'int' y devuelve el resultado en un JSON
+      Este método espera un objeto de tipo array de _int_ y devuelve el resultado en un JSON
 * Sub - resta entre dos numeros y devuelve el resultado. 
-      Este método espera dos 'int'  y devuelve el resultado en un JSON
+      Este método espera dos objetos _int_  y devuelve el resultado en un JSON
 * Mult - realiza la multiplicación de varios números y devuelve el resultado. 
-      Este método espera un array de 'int'  y devuelve el resultado en un JSON
+      Este método espera un objeto de tipo array de _int_  y devuelve el resultado en un JSON
 * Div - realiza la división entre dos números y devuelve el resultado y su resto. 
-      Este método espera dos 'int' dividendo y divisor  y devuelve el resultado en un JSON    
+      Este método espera dos objetos _int_ (dividendo y divisor) y devuelve el resultado en un JSON    
 * Sqrt - realiza la raíz cuadrada de un determinado número. 
-      Este método espera un 'int' sobre el que calcula la raiz cuadrada  y devuelve el resultado en un JSON
+      Este método espera un objeto _int_ sobre el que calcula la raiz cuadrada  y devuelve el resultado en un JSON
 * Query - devuelve una lista de operaciones registradas con un mismo Id. 
-      Este método espera un 'int'  y devuelve el resultado en un JSON con una lista de operaciones registradas
+      Este método espera un objeto _int_ y devuelve el resultado en un JSON con una lista de las operaciones registradas
       
       
 **REFERENCIAS EXTERNAS**
