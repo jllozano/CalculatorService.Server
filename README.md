@@ -20,6 +20,7 @@ Las operaciones son las siguientes:
 * Query - devuelve una lista de operaciones registradas con un mismo Id. 
       Este método espera un 'int'  y devuelve el resultado en un JSON con una lista de operaciones registradas
       
+      
 **REFERENCIAS EXTERNAS**
 
 * [NLOG y NLOGWEB](https://www.nuget.org/packages/NLog):
